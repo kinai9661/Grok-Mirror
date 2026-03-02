@@ -1,6 +1,6 @@
 services:
   gateway:
-    image: dairoot/grok-gateway:latest
+    build: .
     ports:
       - "50005:8080"
     restart: always
