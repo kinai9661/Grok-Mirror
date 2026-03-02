@@ -5,13 +5,16 @@ services:
       - "50005:8080"
     restart: always
     volumes:
-      - ./.cache_data:/app/.cache_data
-    env_file:
-      - .env
-      
+      - grok_data:/app/.cache_data
+    # env_file: # Zeabur users: set environment variables in dashboard
+    #   - .env
+
   cf5s:
     image: dairoot/cf5s:latest
     depends_on:
       - gateway
     environment:
       - GATEWAY_URL=http://gateway:8080
+
+volumes:
+  grok_data:
